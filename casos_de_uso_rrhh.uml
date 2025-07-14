@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Empleado" as Empleado
+actor "Jefe RRHH" as RRHH
+actor "Sistema de Planilla" as Planilla
+
+package "Módulo de RRHH" {
+    
+    usecase "Registrar nuevo empleado" as UC1
+    usecase "Actualizar datos personales" as UC2
+    usecase "Gestionar licencias y ausencias" as UC3
+    usecase "Procesar novedades de sueldo" as UC4
+    usecase "Generar reportes de personal" as UC5
+}
+
+RRHH --> UC1
+RRHH --> UC3
+RRHH --> UC4
+RRHH --> UC5
+
+Empleado --> UC2
+Empleado --> UC3
+
+UC4 --> Planilla : <<envía datos>>
+
+@enduml
